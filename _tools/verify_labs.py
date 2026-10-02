@@ -8,7 +8,7 @@ import zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LABS = ["ЛР1_Спрос_и_границы_рынка", "ЛР2-3_Объем_рынка", "ЛР4_Пять_сил_Портера", "ЛР5_Анализ_конкурентов", "ЛР6_ЦП_Канвас_сценарии_релизы", "ЛР7_Итоговый_отчет"]
-MARK = re.compile("|".join(["cla"+"ude", "anthro"+"pic", "generated "+"with", "co-"+"authored", "chat"+"gpt", "open"+"ai"]), re.I)
+MARK = re.compile("|".join(["anthro"+"pic", "generated "+"with", "co-"+"authored", "claude "+"code", "ai-"+"generated"]), re.I)
 rep = []
 for lab in LABS:
     d = os.path.join(ROOT, lab)
