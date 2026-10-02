@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id S_financial_model_audit_5y
+geo WORLD
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords financial model audit
+checksum 1804
+data ~53~D3302223200220203~43~A3022~322~B2002003002002~42~J2~E304~4202~63~623~62033330232~34~7330320433~333~4476545465DGDBCCAGDHCCBFEHKJELCBDFKIJKPhfQVSguXS_8_c_XYZjaqzUWIMNGGENUWYPH

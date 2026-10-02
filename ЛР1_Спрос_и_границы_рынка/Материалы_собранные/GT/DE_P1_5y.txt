@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id DE_P1_5y
+geo DE
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords excel formula checker ; spreadsheet audit ; excel error checker ; excel model audit ; check excel formulas
+checksum 0 141 160 63 77
+data ~z~z~z~a_F~z~z~z~z~z~Wy~K_1~z~z~z~z~z~r_c~z~z~B_4~s_D~z~z~z
