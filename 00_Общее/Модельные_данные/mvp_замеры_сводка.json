@@ -1,0 +1,104 @@
+{
+ "label": "МОДЕЛЬНЫЕ ЗАМЕРЫ, не измерения MVP",
+ "seed": 20261004,
+ "weeks": 27,
+ "months": {
+  "2027-04": {
+   "visits": 1584,
+   "registrations": 66,
+   "activations": 30,
+   "paying": 0
+  },
+  "2027-05": {
+   "visits": 2038,
+   "registrations": 175,
+   "activations": 102,
+   "paying": 0
+  },
+  "2027-06": {
+   "visits": 2454,
+   "registrations": 129,
+   "activations": 74,
+   "paying": 5
+  },
+  "2027-07": {
+   "visits": 3592,
+   "registrations": 212,
+   "activations": 119,
+   "paying": 10
+  },
+  "2027-08": {
+   "visits": 3539,
+   "registrations": 175,
+   "activations": 117,
+   "paying": 9
+  },
+  "2027-09": {
+   "visits": 5691,
+   "registrations": 309,
+   "activations": 172,
+   "paying": 10
+  }
+ },
+ "total": {
+  "visits": 18898,
+  "registrations": 1066,
+  "activations": 614,
+  "paying": 34
+ },
+ "channels": {
+  "органический поиск": {
+   "visits": 6735,
+   "registrations": 329,
+   "activations": 189,
+   "paying": 11
+  },
+  "прямые и закладки": {
+   "visits": 4099,
+   "registrations": 289,
+   "activations": 152,
+   "paying": 10
+  },
+  "рефералы и сообщества": {
+   "visits": 3267,
+   "registrations": 154,
+   "activations": 93,
+   "paying": 5
+  },
+  "платные объявления": {
+   "visits": 2793,
+   "registrations": 156,
+   "activations": 95,
+   "paying": 2
+  },
+  "почта и партнеры": {
+   "visits": 2004,
+   "registrations": 138,
+   "activations": 85,
+   "paying": 6
+  }
+ },
+ "conv": {
+  "v2l": 0.05640808551169436,
+  "l2a": 0.575984990619137,
+  "a2p": 0.07053941908713693,
+  "l2p": 0.041212121212121214
+ },
+ "goal": {
+  "registrations": 300,
+  "paying": 50,
+  "reg_ok": true,
+  "pay_ok": false
+ },
+ "mc": {
+  "n": 500,
+  "reg_p10": 437,
+  "reg_p50": 744,
+  "reg_p90": 1107,
+  "pay_p10": 10,
+  "pay_p50": 23,
+  "pay_p90": 54,
+  "p_reg_goal": 0.98,
+  "p_pay_goal": 0.148
+ }
+}

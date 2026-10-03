@@ -28,9 +28,9 @@ from docx.shared import Mm, Pt, RGBColor
 ROOT = Path(__file__).resolve().parent.parent
 
 STUDENT = "Р. В. Земляник"
-GROUP = "60131"
-TEACHER = "Т. Н. Беляцкая"
-TEACHER_LABEL = "Проверила:"
+GROUP = "60121"
+TEACHER = "И. В. Кашникова"
+TEACHER_LABEL = "Руководитель:"
 FACULTY = "повышения квалификации и переподготовки"
 DEPARTMENT = "микропроцессорных систем и сетей"
 DISCIPLINE = "Электронный бизнес"
@@ -161,29 +161,30 @@ def title_page(doc, first, lab_no, topic, kind):
         ("Министерство образования Республики Беларусь", 0),
         ("", 0),
         ("Учреждение образования", 0),
-        ("БЕЛОРУССКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ", 0),
-        ("ИНФОРМАТИКИ И РАДИОЭЛЕКТРОНИКИ", 0),
+        ("«Белорусский государственный университет", 0),
+        ("информатики и радиоэлектроники»", 0),
+        ("Обособленное подразделение «Институт информационных технологий БГУИР»", 0),
         ("", 0),
         (f"Факультет {FACULTY}", 0),
         ("", 0),
         (f"Кафедра {DEPARTMENT}", 0),
-    ] + [("", 0)] * 8 + [
+    ] + [("", 0)] * 6 + [
         ("ОТЧЕТ", 1),
         (f"по {kind} {lab_no}", 0),
         ("по дисциплине", 0),
         (f"«{DISCIPLINE}»", 0),
         (f"на тему «{topic}»", 0),
-    ] + [("", 0)] * 5
+    ] + [("", 0)] * 4
     for text, bold in rows:
         insert_before(first, text, align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0), bold=bool(bold))
-    for label, value in (("Выполнила:", f"ст. гр. {GROUP}"), ("", STUDENT), ("", ""), (TEACHER_LABEL, TEACHER)):
+    for label, value in (("Слушатель", f"гр. {GROUP}"), ("", STUDENT), ("", ""), (TEACHER_LABEL, TEACHER)):
         p = insert_before(first, "", align=WD_ALIGN_PARAGRAPH.LEFT, indent=Mm(0))
         p.paragraph_format.left_indent = Mm(0)
         r1 = p.add_run(label)
         r1.font.size = Pt(14)
         p.add_run("\t" + value).font.size = Pt(14)
         p.paragraph_format.tab_stops.add_tab_stop(Mm(115))
-    for _ in range(7):
+    for _ in range(5):
         insert_before(first, "", indent=Mm(0))
     insert_before(first, f"Минск {YEAR}", align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0))
     toc_head = insert_before(first, "СОДЕРЖАНИЕ", align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0), bold=True, after=18)
@@ -496,7 +497,7 @@ def build_final():
             continue
         n += 1
         body = src.read_text(encoding="utf-8")
-        body = re.sub(r"\]\((?!http)(Рисунки/[^)]+)\)", lambda m: f"]({(ROOT / folder / m.group(1)).as_posix()})", body)
+        body = re.sub(r"\]\((?!http)((?:Рисунки|Скриншоты)/[^)]+)\)", lambda m: f"]({(ROOT / folder / m.group(1)).as_posix()})", body)
         body = "\n".join(body.splitlines()[next((i for i, l in enumerate(body.splitlines()) if l.startswith("## ")), 0):])
         body = re.sub(r"^(#{2,5}) ", lambda m: "#" + m.group(1) + " ", body, flags=re.M)
         body = re.sub(r"^(#{3,6}) (\d+(?:\.\d+)*) ", lambda m: f"{m.group(1)} {n}.{m.group(2)} ", body, flags=re.M)

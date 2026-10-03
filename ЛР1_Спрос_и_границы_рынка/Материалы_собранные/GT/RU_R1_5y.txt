@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id RU_R1_5y
+geo RU
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords проверка формул excel ; ошибки в формулах excel ; аудит excel ; нейросеть для excel ; excel искусственный интеллект
+checksum 0 100 87 102 65
+data ~w_V~z~z~z~gx~V_c~z~z~z~2_P~z~z~z~z~z~z~z~z~z~z~z~z~z~79~56

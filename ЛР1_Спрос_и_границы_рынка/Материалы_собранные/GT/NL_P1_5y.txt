@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id NL_P1_5y
+geo NL
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords excel formula checker ; spreadsheet audit ; excel error checker ; excel model audit ; check excel formulas
+checksum 0 168 0 198 159
+data ~z~z~z~z~z~Q_H~z~G_W~z~z~H_3~z~z~z~z~z~z~C_c~x_a~z~z~z~z~c_R~c

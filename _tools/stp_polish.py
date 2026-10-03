@@ -56,7 +56,7 @@ def split_latin(text):
 
 
 def italic_latin(p):
-    if _is_heading(p):
+    if (p.style.name or "").lower().startswith("toc"):
         return
     for r in list(p.runs):
         if _has_field(r) or not r.text:

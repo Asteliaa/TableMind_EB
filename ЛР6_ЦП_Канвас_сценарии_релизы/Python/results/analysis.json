@@ -1,0 +1,941 @@
+{
+ "checks": [
+  {
+   "name": "Индекс проблемы P-001",
+   "python": 86,
+   "excel": 86.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс проблемы P-002",
+   "python": 80,
+   "excel": 80.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс проблемы P-003",
+   "python": 71,
+   "excel": 71.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс проблемы P-004",
+   "python": 62,
+   "excel": 62.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс проблемы P-005",
+   "python": 70,
+   "excel": 70.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс проблемы P-006",
+   "python": 71,
+   "excel": 71.0,
+   "ok": true
+  },
+  {
+   "name": "Потенциал монетизации M-001",
+   "python": 82,
+   "excel": 82.0,
+   "ok": true
+  },
+  {
+   "name": "Выручка M-001",
+   "python": 27,
+   "excel": 27.0,
+   "ok": true
+  },
+  {
+   "name": "Потенциал монетизации M-002",
+   "python": 100,
+   "excel": 100.0,
+   "ok": true
+  },
+  {
+   "name": "Выручка M-002",
+   "python": 38,
+   "excel": 38.0,
+   "ok": true
+  },
+  {
+   "name": "Потенциал монетизации M-003",
+   "python": 92,
+   "excel": 92.0,
+   "ok": true
+  },
+  {
+   "name": "Выручка M-003",
+   "python": 29,
+   "excel": 29.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сегмента Финансовые аналитики и FP&A",
+   "python": 4.25,
+   "excel": 4.25,
+   "ok": true
+  },
+  {
+   "name": "Индекс сегмента Бухгалтеры и аудиторы",
+   "python": 3.75,
+   "excel": 3.75,
+   "ok": true
+  },
+  {
+   "name": "Индекс сегмента Консультанты по управлению",
+   "python": 4.25,
+   "excel": 4.25,
+   "ok": true
+  },
+  {
+   "name": "Индекс сегмента МСП с финансовой функцией",
+   "python": 3.0,
+   "excel": 3.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-001",
+   "python": 18.0,
+   "excel": 18.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-001",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-002",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-002",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-003",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-003",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-004",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-004",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-005",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-005",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-006",
+   "python": 10.666666666666666,
+   "excel": 10.666666666666666,
+   "ok": true
+  },
+  {
+   "name": "MVP F-006",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-007",
+   "python": 14.0,
+   "excel": 14.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-007",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-008",
+   "python": 21.0,
+   "excel": 21.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-008",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-009",
+   "python": 6.75,
+   "excel": 6.75,
+   "ok": true
+  },
+  {
+   "name": "MVP F-009",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-010",
+   "python": 9.0,
+   "excel": 9.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-010",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-011",
+   "python": 9.0,
+   "excel": 9.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-011",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-012",
+   "python": 6.0,
+   "excel": 6.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-012",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-013",
+   "python": 3.75,
+   "excel": 3.75,
+   "ok": true
+  },
+  {
+   "name": "MVP F-013",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-014",
+   "python": 4.8,
+   "excel": 4.8,
+   "ok": true
+  },
+  {
+   "name": "MVP F-014",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-015",
+   "python": 2.0,
+   "excel": 2.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-015",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-016",
+   "python": 3.0,
+   "excel": 3.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-016",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-017",
+   "python": 2.8,
+   "excel": 2.8,
+   "ok": true
+  },
+  {
+   "name": "MVP F-017",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс требования F-018",
+   "python": 2.0,
+   "excel": 2.0,
+   "ok": true
+  },
+  {
+   "name": "MVP F-018",
+   "python": 0.0,
+   "excel": 0.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-001",
+   "python": 15.0,
+   "excel": 15.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-002",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-003",
+   "python": 15.0,
+   "excel": 15.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-004",
+   "python": 12.0,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-005",
+   "python": 10.0,
+   "excel": 10.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-006",
+   "python": 4.8,
+   "excel": 4.8,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-007",
+   "python": 4.8,
+   "excel": 4.8,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-008",
+   "python": 1.8,
+   "excel": 1.8,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-009",
+   "python": 2.4,
+   "excel": 2.4,
+   "ok": true
+  },
+  {
+   "name": "Индекс сценария S-010",
+   "python": 2.4,
+   "excel": 2.4,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-001",
+   "python": 4.28,
+   "excel": 4.28,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-001",
+   "python": 3.24,
+   "excel": 3.24,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-001",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-002",
+   "python": 4.72,
+   "excel": 4.72,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-002",
+   "python": 4.06,
+   "excel": 4.06,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-002",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-003",
+   "python": 4.77,
+   "excel": 4.77,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-003",
+   "python": 3.98,
+   "excel": 3.98,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-003",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-004",
+   "python": 4.11,
+   "excel": 4.11,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-004",
+   "python": 4.0,
+   "excel": 4.0,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-004",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-005",
+   "python": 4.14,
+   "excel": 4.14,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-005",
+   "python": 3.64,
+   "excel": 3.64,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-005",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-006",
+   "python": 4.31,
+   "excel": 4.31,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-006",
+   "python": 2.9,
+   "excel": 2.9,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-006",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-007",
+   "python": 4.45,
+   "excel": 4.45,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-007",
+   "python": 2.98,
+   "excel": 2.98,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-007",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-008",
+   "python": 4.02,
+   "excel": 4.02,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-008",
+   "python": 3.46,
+   "excel": 3.46,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-008",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-009",
+   "python": 4.18,
+   "excel": 4.18,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-009",
+   "python": 3.38,
+   "excel": 3.38,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-009",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-010",
+   "python": 3.81,
+   "excel": 3.81,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-010",
+   "python": 2.94,
+   "excel": 2.94,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-010",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-011",
+   "python": 3.25,
+   "excel": 3.25,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-011",
+   "python": 3.22,
+   "excel": 3.22,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-011",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-012",
+   "python": 3.69,
+   "excel": 3.69,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-012",
+   "python": 4.32,
+   "excel": 4.32,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-012",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-013",
+   "python": 3.46,
+   "excel": 3.46,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-013",
+   "python": 3.4,
+   "excel": 3.4,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-013",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-014",
+   "python": 3.35,
+   "excel": 3.35,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-014",
+   "python": 3.5,
+   "excel": 3.5,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-014",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-015",
+   "python": 2.8,
+   "excel": 2.8,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-015",
+   "python": 3.38,
+   "excel": 3.38,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-015",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-016",
+   "python": 3.23,
+   "excel": 3.23,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-016",
+   "python": 3.8,
+   "excel": 3.8,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-016",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-017",
+   "python": 3.72,
+   "excel": 3.72,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-017",
+   "python": 3.28,
+   "excel": 3.28,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-017",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-018",
+   "python": 3.07,
+   "excel": 3.07,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-018",
+   "python": 3.54,
+   "excel": 3.54,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-018",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-019",
+   "python": 3.47,
+   "excel": 3.47,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-019",
+   "python": 3.66,
+   "excel": 3.66,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-019",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-020",
+   "python": 2.57,
+   "excel": 2.57,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-020",
+   "python": 3.26,
+   "excel": 3.26,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-020",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-021",
+   "python": 2.41,
+   "excel": 2.41,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-021",
+   "python": 3.0,
+   "excel": 3.0,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-021",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-022",
+   "python": 2.52,
+   "excel": 2.52,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-022",
+   "python": 3.5,
+   "excel": 3.5,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-022",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-023",
+   "python": 1.02,
+   "excel": 1.02,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-023",
+   "python": 2.18,
+   "excel": 2.18,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-023",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Балл первого релиза U-024",
+   "python": 1.48,
+   "excel": 1.48,
+   "ok": true
+  },
+  {
+   "name": "Балл следующих релизов U-024",
+   "python": 2.66,
+   "excel": 2.66,
+   "ok": true
+  },
+  {
+   "name": "Релиз U-024",
+   "python": 1.0,
+   "excel": 1.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-001",
+   "python": 10,
+   "excel": 10.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-002",
+   "python": 15,
+   "excel": 15.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-003",
+   "python": 12,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-004",
+   "python": 12,
+   "excel": 12.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-005",
+   "python": 8,
+   "excel": 8.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-006",
+   "python": 16,
+   "excel": 16.0,
+   "ok": true
+  },
+  {
+   "name": "Индекс риска R-007",
+   "python": 9,
+   "excel": 9.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-001",
+   "python": 86,
+   "excel": 86.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-002",
+   "python": 86,
+   "excel": 86.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-003",
+   "python": 84,
+   "excel": 84.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-004",
+   "python": 72,
+   "excel": 72.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-005",
+   "python": 74,
+   "excel": 74.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-006",
+   "python": 68,
+   "excel": 68.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-007",
+   "python": 79,
+   "excel": 79.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-008",
+   "python": 66,
+   "excel": 66.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-009",
+   "python": 70,
+   "excel": 70.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-010",
+   "python": 50,
+   "excel": 50.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-011",
+   "python": 53,
+   "excel": 53.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-012",
+   "python": 68,
+   "excel": 68.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-016",
+   "python": 53,
+   "excel": 53.0,
+   "ok": true
+  },
+  {
+   "name": "Приоритет экрана U-017",
+   "python": 53,
+   "excel": 53.0,
+   "ok": true
+  }
+ ],
+ "mvp": 8,
+ "release_counts": {
+  "first": 11,
+  "next": 3,
+  "other": 10
+ },
+ "all_ok": true
+}

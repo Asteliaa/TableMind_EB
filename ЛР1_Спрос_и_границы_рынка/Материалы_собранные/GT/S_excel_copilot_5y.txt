@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id S_excel_copilot_5y
+geo WORLD
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords excel copilot
+checksum 5560
+data ~z~61~6107C765534333333333322222222325434354566664357CEDDFGFFEGEEEEEDCDFEHGDDBCBBBBBDCCFHIGHGIGIIKHHLHCDHMSTRPTRPPSRPQNSOPSYWccbWXXYVWht_c_6uuw_5_X_B_1t_1st_4rx_0uVUnoosuxu_2_5_K_H_8_3x_A_H_C_H_X_U_F_I_F_8_8_2_3pwnlirkpqsro

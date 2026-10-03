@@ -1,0 +1,11 @@
+source Google Trends (explore API, web search, category 0)
+fetched 2026-10-02
+id S_excel_formula_checker_5y
+geo WORLD
+time today 5-y
+start_epoch 1632614400
+n 262
+step_sec 604800
+keywords excel formula checker
+checksum 3012
+data ~8_c~7_W00_300r~4n00_3~7_B~G_4x~Av00_50v_3_M~6r_4~3w~Fx00_G0s0_M0_H_V_K_I~6_4~5_A00_9~4_7~C_9~8z_800_6~p_0_50_N~F_00_2~3_100w00_Ey0_M~B6JI
