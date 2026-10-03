@@ -28,7 +28,7 @@ from docx.shared import Mm, Pt, RGBColor
 ROOT = Path(__file__).resolve().parent.parent
 
 STUDENT = "Р. В. Земляник"
-GROUP = "60121"
+GROUP = "60131"
 TEACHER = "И. В. Кашникова"
 TEACHER_LABEL = "Руководитель:"
 FACULTY = "повышения квалификации и переподготовки"
