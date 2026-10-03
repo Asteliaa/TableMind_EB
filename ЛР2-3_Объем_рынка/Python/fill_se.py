@@ -67,7 +67,7 @@ def fill(x: XL, sw, results):
     put(ws, "B7", CTR["base"]); put(ws, "B8", FUNNEL["v2l"]["base"]); put(ws, "B9", FUNNEL["l2p"]["base"]); put(ws, "B10", 1.0)
     put(ws, "D10", "1: годовой чек уже учитывает платежи в течение года")
     put(ws, "B11", 0.5); put(ws, "B12", 0.5)
-    put(ws, "D11", "Веса источников 0,5/0,5 (допущение Д-07 ЛР1)")
+    put(ws, "D11", "Веса источников 0,5/0,5 (допущение Д-06 ЛР1)")
 
     gt = {k: dp.gt(v) for k, v in GT_COLS.items()}
     ws = x.ws("03_Google_Trends")
