@@ -24,6 +24,10 @@ class XL:
         dst = OUT / out_name
         shutil.copyfile(TPL / tpl_name, dst)
         self.wb = self.app.Workbooks.Open(str(dst))
+        # валюта шаблонов - BYN/руб.; расчет ЛР2-3 ведется в EUR, демонстрационная дата заменяется датой снимка
+        for ws in self.wb.Worksheets:
+            for old, new in (("BYN", "EUR"), ("руб.", "EUR"), ("2026-05-02", "2026-10-03")):
+                ws.Cells.Replace(What=old, Replacement=new, LookAt=2)
         return self.wb
 
     def ws(self, name):
