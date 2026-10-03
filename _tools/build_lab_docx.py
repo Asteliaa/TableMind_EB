@@ -168,13 +168,13 @@ def title_page(doc, first, lab_no, topic, kind):
         (f"Факультет {FACULTY}", 0),
         ("", 0),
         (f"Кафедра {DEPARTMENT}", 0),
-    ] + [("", 0)] * 8 + [
+    ] + [("", 0)] * 6 + [
         ("ОТЧЕТ", 1),
         (f"по {kind} {lab_no}", 0),
         ("по дисциплине", 0),
         (f"«{DISCIPLINE}»", 0),
         (f"на тему «{topic}»", 0),
-    ] + [("", 0)] * 5
+    ] + [("", 0)] * 4
     for text, bold in rows:
         insert_before(first, text, align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0), bold=bool(bold))
     for label, value in (("Слушатель", f"гр. {GROUP}"), ("", STUDENT), ("", ""), (TEACHER_LABEL, TEACHER)):
@@ -184,7 +184,7 @@ def title_page(doc, first, lab_no, topic, kind):
         r1.font.size = Pt(14)
         p.add_run("\t" + value).font.size = Pt(14)
         p.paragraph_format.tab_stops.add_tab_stop(Mm(115))
-    for _ in range(7):
+    for _ in range(5):
         insert_before(first, "", indent=Mm(0))
     insert_before(first, f"Минск {YEAR}", align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0))
     toc_head = insert_before(first, "СОДЕРЖАНИЕ", align=WD_ALIGN_PARAGRAPH.CENTER, indent=Mm(0), bold=True, after=18)
