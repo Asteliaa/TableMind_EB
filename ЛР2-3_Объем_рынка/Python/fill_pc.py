@@ -19,7 +19,7 @@ def fill(x: XL, sw, results):
     put(ws, "B9", "EUR")
     put(ws, "C9", "Курс НБРБ 03.10.2026: 1 EUR = 3,3860 BYN")
     put(ws, "B11", SNAP_SERIAL)
-    put(ws, "B12", "Р. В. Земляник, гр. 60131")
+    put(ws, "B12", "Р. В. Земляник, гр. 60121")
 
     ws = x.ws("02_Сегменты")
     for i, s in enumerate(SEGMENTS):
