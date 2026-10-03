@@ -496,7 +496,7 @@ def build_final():
             continue
         n += 1
         body = src.read_text(encoding="utf-8")
-        body = re.sub(r"\]\((?!http)(Рисунки/[^)]+)\)", lambda m: f"]({(ROOT / folder / m.group(1)).as_posix()})", body)
+        body = re.sub(r"\]\((?!http)((?:Рисунки|Скриншоты)/[^)]+)\)", lambda m: f"]({(ROOT / folder / m.group(1)).as_posix()})", body)
         body = "\n".join(body.splitlines()[next((i for i, l in enumerate(body.splitlines()) if l.startswith("## ")), 0):])
         body = re.sub(r"^(#{2,5}) ", lambda m: "#" + m.group(1) + " ", body, flags=re.M)
         body = re.sub(r"^(#{3,6}) (\d+(?:\.\d+)*) ", lambda m: f"{m.group(1)} {n}.{m.group(2)} ", body, flags=re.M)
