@@ -126,7 +126,7 @@ def do_lk(app):
             if not pres[ci]:
                 continue
             s = strn[ci]
-            put_row(w3, r, "A", [c["id"], c["prod"][:60], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта 03.10.2026", 1, min(3, round(s * 3 / 5)), 3 if s >= 3 else 2, wgt])
+            put_row(w3, r, "A", [c["id"], c["prod"], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта 03.10.2026", 1, min(3, round(s * 3 / 5)), 3 if s >= 3 else 2, wgt])
             r += 1
     n_lev = r - 7
     # Кано
