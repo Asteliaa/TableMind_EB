@@ -1,0 +1,37 @@
+{
+ "mean_rated": 9.76923076923077,
+ "median_rated": 7,
+ "sum_loaded": 127,
+ "per_listing": 8.466666666666667,
+ "total_ratings": 211.66666666666666,
+ "paid_share": 0.6,
+ "sc": {
+  "cons": {
+   "installs": 2116.6666666666665,
+   "per_year": 705.5555555555555,
+   "payers": 21.166666666666668,
+   "revenue": 1140.8833333333334,
+   "payers_month": 1.763888888888889,
+   "channel_year": 24,
+   "channel_vs_segment": 1.1338582677165354
+  },
+  "base": {
+   "installs": 4233.333333333333,
+   "per_year": 1411.111111111111,
+   "payers": 84.66666666666667,
+   "revenue": 8515.773333333334,
+   "payers_month": 7.055555555555556,
+   "channel_year": 96,
+   "channel_vs_segment": 1.1338582677165354
+  },
+  "opt": {
+   "installs": 10583.333333333332,
+   "per_year": 3527.7777777777774,
+   "payers": 317.49999999999994,
+   "revenue": 47370.999999999985,
+   "payers_month": 26.45833333333333,
+   "channel_year": 240,
+   "channel_vs_segment": 0.7559055118110237
+  }
+ }
+}
