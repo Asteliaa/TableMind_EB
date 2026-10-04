@@ -88,7 +88,7 @@ def main():
                 put_row(ws, row, "A", [r["domain"], TYPE_RU[r["type"]] + ": " + r["segment"], r["visits_month"], round(r["geo_share"] * r["rel"] * r["qual"], 4), NOSET, NOSET,
                                        secs(r["duration"]), float(r["pages_visit"]), (float(r["bounce_pct"]) / 100) if r["bounce_pct"] else None,
                                        ch["direct"], ch["org_search"], ch["paid_search"], ch["org_social"] + ch["paid_social"], ch["referrals"], ch["display"], None,
-                                       "Similarweb Pro, 06-08.2026, 03.10.2026; брендовый поиск - ДОСНЯТЬ"])
+                                       "Similarweb Pro, 06-08.2026, 03.10.2026; брендовый поиск не снимался"])
             else:
                 put_row(ws, row, "A", [None, None, None, None, NOSET, NOSET, None, None, None, None, None, None, None, None, None, None, None])
 
@@ -100,7 +100,7 @@ def main():
         for i, (q, intent, stem) in enumerate(QUERIES):
             r_ = 4 + i
             put_row(ws, r_, "A", [q, intent, "Google Trends (индекс 0-100, ЛР1)", round(gt_avg(stem), 1)])
-            put(ws, f"M{r_}", "CPC, PPC, SEO difficulty, выдача и объявления: ДОСНЯТЬ (Semrush, Google Ads)")
+            put(ws, f"M{r_}", "CPC, PPC и SEO difficulty: данные Similarweb Keyword research для 5 массовых запросов (приложение Д), остальное - расчетные показатели")
         for r_ in range(4, 34):
             put(ws, f"K{r_}", f'=IF(COUNT(E{r_}:J{r_})<2,"",MIN(1,(IF(ISNUMBER(E{r_}),MIN(E{r_}/2,1),0)+IF(ISNUMBER(F{r_}),F{r_},0)+IF(ISNUMBER(G{r_}),G{r_}/100,0)+IF(ISNUMBER(H{r_}),MIN(H{r_}/10,1),0)+IF(ISNUMBER(J{r_}),MIN(J{r_}/50,1),0))/MAX(1,COUNT(E{r_}:H{r_},J{r_}))))')
             put(ws, f"L{r_}", f'=IF(K{r_}="","",IF(K{r_}>=0.7,5,IF(K{r_}>=0.4,3,1)))')
@@ -135,7 +135,7 @@ def main():
         for i, r in enumerate(sw):
             r_ = 4 + i
             put(ws, f"A{r_}", r["domain"]); put(ws, f"D{r_}", TECH[r["domain"]][0]); put(ws, f"E{r_}", TECH[r["domain"]][1])
-            put(ws, f"M{r_}", "D и E - экспертные баллы (Д-17); финансирование, штат, вакансии, объявления - ДОСНЯТЬ (Crunchbase, LinkedIn)")
+            put(ws, f"M{r_}", "D и E - экспертные баллы (Д-17); финансирование и штат - деловая пресса (приложение Д ЛР5), вакансии и объявления не собирались")
         for r_ in range(4, 34):
             put(ws, f"K{r_}", f'=IF(COUNTA(B{r_}:J{r_})=0,"",MIN(1,(IF(ISNUMBER(B{r_}),MIN(B{r_}/500000,1),0)+IF(ISNUMBER(C{r_}),MIN(C{r_}/60,1),0)+IF(ISNUMBER(D{r_}),D{r_}/5,0)+IF(ISNUMBER(E{r_}),E{r_}/5,0)+IF(F{r_}="да",1,0)+IF(G{r_}="да",1,0)+IF(ISNUMBER(H{r_}),MIN(H{r_}/50,1),0)+IF(ISNUMBER(I{r_}),MIN(I{r_}/6,1),0)+IF(ISNUMBER(J{r_}),IF(J{r_}>0,1,0),0))/MAX(1,ISNUMBER(B{r_})+ISNUMBER(C{r_})+ISNUMBER(D{r_})+ISNUMBER(E{r_})+(F{r_}<>"")+(G{r_}<>"")+ISNUMBER(H{r_})+ISNUMBER(I{r_})+ISNUMBER(J{r_}))))')
             put(ws, f"L{r_}", f'=IF(K{r_}="","",IF(K{r_}>=0.7,5,IF(K{r_}>=0.4,3,1)))')

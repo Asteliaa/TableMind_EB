@@ -487,11 +487,24 @@ def build_lab(folder: str):
     build(src.read_text(encoding="utf-8"), ROOT / folder, ROOT / folder / f"ОТЧЕТ_{short}_TableMind.docx", lab_no, topic, kind)
 
 
+LAB_INTRO = {
+    1: "В разделе приведена лабораторная работа № 1: поисковый спрос, семантическое ядро и границы рынка проекта TableMind." + chr(10) * 2,
+    2: "В разделе приведена лабораторная работа № 2-3: оценка объема рынка несколькими методами и сопоставление с целями проекта." + chr(10) * 2,
+    3: "В разделе приведена лабораторная работа № 4: анализ конкуренции по модели пяти сил Портера и оценка барьеров входа." + chr(10) * 2,
+    4: "В разделе приведена лабораторная работа № 5: классификация конкурентов, анализ цифрового товара и бизнес-моделей." + chr(10) * 2,
+    5: "В разделе приведена лабораторная работа № 6: ценностное предложение, Канвас, сценарии, экраны и деление на релизы." + chr(10) * 2,
+    6: "В разделе приведена лабораторная работа № 7: итоговый отчет по бизнес-анализу и решение о целесообразности старта." + chr(10) * 2,
+}
+
+
 def build_final():
     parts = []
     intro = ROOT / "Финальный_отчет" / "00_Введение.md"
     if intro.exists():
         parts.append("## Введение\n\n" + prepare_md_intro(intro.read_text(encoding="utf-8")))
+    abbr = ROOT / "Финальный_отчет" / "00а_Сокращения.md"
+    if abbr.exists():
+        parts.append("## Перечень сокращений и терминов\n\n" + abbr.read_text(encoding="utf-8"))
     n = 0
     for folder, (lab_no, topic) in LABS.items():
         src = ROOT / folder / "ОТЧЕТ.md"
@@ -503,7 +516,7 @@ def build_final():
         body = "\n".join(body.splitlines()[next((i for i, l in enumerate(body.splitlines()) if l.startswith("## ")), 0):])
         body = re.sub(r"^(#{2,5}) ", lambda m: "#" + m.group(1) + " ", body, flags=re.M)
         body = re.sub(r"^(#{3,6}) (\d+(?:\.\d+)*) ", lambda m: f"{m.group(1)} {n}.{m.group(2)} ", body, flags=re.M)
-        parts.append(f"## {n} Лабораторная работа {lab_no}. {topic}\n\n" + body)
+        parts.append(f"## {n} Лабораторная работа {lab_no}. {topic}\n\n" + LAB_INTRO.get(n, "") + body)
     for extra in ("99_Заключение.md", "98_Список_источников.md"):
         f = ROOT / "Финальный_отчет" / extra
         if f.exists():

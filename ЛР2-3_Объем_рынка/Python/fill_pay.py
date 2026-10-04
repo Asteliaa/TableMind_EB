@@ -16,7 +16,7 @@ PRICE_ROWS = [
     ("Командное место Team (в месяц за место)", 7.10, 22.37, 88.76, 4.5, PRICE["team"],
      "Rows Plus на пользователя 8 USD; Copilot Business 25,2 USD; Shortcut Teams 100 USD за место", "страницы цен, 03.10.2026"),
     ("Специализированный аудит таблиц (класс PerfectXL)", 69.0, 69.0, 69.0, 4.0, PRICE["pro"],
-     "PerfectXL отдельный инструмент от 69 EUR в месяц; Arixcel и Operis цены не публикуют (ДОСНЯТЬ)", "perfectxl.com/pricing"),
+     "PerfectXL отдельный инструмент от 69 EUR в месяц; Arixcel 2,75 GBP за пользователя в месяц, Operis OAK 311,66 GBP в год (в коридор не включены)", "perfectxl.com/pricing"),
 ]
 SEG_KEYS = ["fin_analysts", "accountants", "consultants", "sme"]
 HOURS = {"fin_analysts": 60, "accountants": 50, "consultants": 50, "sme": 40}  # часов в месяц на работу с таблицами
@@ -103,7 +103,7 @@ def fill(x: XL, sw, results):
         put(ws, f"E{r}", "2026-10-03")
     put(ws, "A5", "BLS, SBA, ЕК, UK BPE (вместо Белстата)"); put(ws, "D5", "bls.gov/ooh; advocacy.sba.gov; single-market-economy.ec.europa.eu; gov.uk")
     put(ws, "A8", "Яндекс Вордстат и Google Trends (ЛР1)"); put(ws, "D8", "ЛР1, Материалы_собранные")
-    put(ws, "A10", "Опросы / интервью (расчетная модель)"); put(ws, "F10", "Расчетные данные по решению автора (Р-8); реального опроса не проводилось")
+    put(ws, "A10", "Расчет ценовой чувствительности по профилям клиентов"); put(ws, "F10", "Расчет по параметрам сегментов (допущение Д-30), приложение Г отчета")
 
     x.app.CalculateFull()
     w5 = x.ws("05_Платежеспособность"); w8 = x.ws("08_Итоговая_панель")

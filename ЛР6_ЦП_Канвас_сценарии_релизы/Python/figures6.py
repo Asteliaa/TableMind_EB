@@ -50,29 +50,32 @@ def f1():
 def f2():
     rows = X["logic"]["req"]
     rows = sorted(rows, key=lambda r: r[3])
-    fig, ax = plt.subplots(figsize=(8.2, 4.8))
+    fig, ax = plt.subplots(figsize=(8.2, 6.0))
     cols = ["#d62728" if r[5] == "Да" else "#7f7f7f" for r in rows]
-    ax.barh([f"{r[0]} {r[1]}"[:52] for r in rows], [r[3] for r in rows], color=cols)
+    ax.barh([wrap(f"{r[0]} {r[1]}", 40) for r in rows], [r[3] for r in rows], color=cols)
     ax.axvline(10, color="k", ls="--", lw=1)
     ax.text(10.3, 0.2, "порог MVP (высокий приоритет) = 10", fontsize=7.5)
     ax.set_xlabel("индекс приоритета требования; красные - требования MVP (8 из 18)")
     plt.setp(ax.get_yticklabels(), fontsize=7.5)
+    from matplotlib.ticker import FuncFormatter
+    ax.xaxis.set_major_formatter(FuncFormatter(lambda v, _: f"{v:g}".replace(".", ",")))
     fig.tight_layout(); fig.savefig(OUT / "02_приоритет_требований.png", dpi=200); plt.close(fig)
 
 
 def f3():
-    fig, ax = plt.subplots(figsize=(8.2, 3.6))
+    fig, ax = plt.subplots(figsize=(8.2, 3.9))
     cols = ["#1f77b4", "#2ca02c", "#ff7f0e", "#d62728"]
     for i, r in enumerate(ROAD):
         y, m, d = map(int, r[9].split("-")); a = date(y, m, d)
         y, m, d = map(int, r[10].split("-")); b = date(y, m, d)
         ax.barh(len(ROAD) - i, (b - a).days, left=mdates.date2num(a), color=cols[i], height=0.5)
-        ax.text(mdates.date2num(a) + 3, len(ROAD) - i, f"{r[0]}: {wrap(r[1], 38).splitlines()[0]}", va="center", fontsize=7.5, color="white")
     for lab, dt in (("MVP 31.03.2027", date(2027, 3, 31)), ("бета с оплатой 01.06.2027", date(2027, 6, 1)), ("бета v1 июль 2027", date(2027, 7, 31)), ("релиз 30.09.2027", date(2027, 9, 30))):
         ax.axvline(mdates.date2num(dt), color="k", lw=0.7, ls=":")
-        ax.text(mdates.date2num(dt), 4.75, lab, rotation=90, fontsize=7, va="top", ha="right")
-    ax.set_yticks([]); ax.xaxis_date(); ax.xaxis.set_major_formatter(mdates.DateFormatter("%m.%Y"))
-    ax.set_ylim(0.3, 4.9)
+        ax.text(mdates.date2num(dt), 6.2, lab, rotation=90, fontsize=7, va="top", ha="right")
+    ax.set_yticks([len(ROAD) - i for i in range(len(ROAD))])
+    ax.set_yticklabels([wrap(f"{r[0]}: {r[1]}", 30) for r in ROAD], fontsize=7.5)
+    ax.xaxis_date(); ax.xaxis.set_major_formatter(mdates.DateFormatter("%m.%Y"))
+    ax.set_ylim(0.3, 6.3)
     fig.tight_layout(); fig.savefig(OUT / "03_дорожная_карта.png", dpi=200); plt.close(fig)
 
 

@@ -1,0 +1,133 @@
+{
+ "label": "МОДЕЛЬНЫЕ ПОКАЗАТЕЛИ, не выгрузка сервиса",
+ "anchor": 14800,
+ "rows": [
+  {
+   "keyword": "excel formulas",
+   "intent": "информационный",
+   "volume_month": 14800,
+   "cpc_low_eur": 0.98,
+   "cpc_high_eur": 2.45,
+   "competition_0_100": 45,
+   "seo_difficulty_0_100": 38,
+   "advertisers": 8
+  },
+  {
+   "keyword": "financial modeling",
+   "intent": "информационный",
+   "volume_month": 3040,
+   "cpc_low_eur": 1.03,
+   "cpc_high_eur": 2.5,
+   "competition_0_100": 30,
+   "seo_difficulty_0_100": 24,
+   "advertisers": 4
+  },
+  {
+   "keyword": "excel copilot",
+   "intent": "инструмент",
+   "volume_month": 2560,
+   "cpc_low_eur": 1.46,
+   "cpc_high_eur": 5.21,
+   "competition_0_100": 45,
+   "seo_difficulty_0_100": 32,
+   "advertisers": 10
+  },
+  {
+   "keyword": "chatgpt excel",
+   "intent": "инструмент",
+   "volume_month": 1760,
+   "cpc_low_eur": 1.79,
+   "cpc_high_eur": 5.63,
+   "competition_0_100": 75,
+   "seo_difficulty_0_100": 58,
+   "advertisers": 15
+  },
+  {
+   "keyword": "excel ai",
+   "intent": "инструмент",
+   "volume_month": 820,
+   "cpc_low_eur": 1.62,
+   "cpc_high_eur": 5.72,
+   "competition_0_100": 50,
+   "seo_difficulty_0_100": 49,
+   "advertisers": 5
+  },
+  {
+   "keyword": "excel formula checker",
+   "intent": "инструмент",
+   "volume_month": 170,
+   "cpc_low_eur": 1.5,
+   "cpc_high_eur": 5.75,
+   "competition_0_100": 57,
+   "seo_difficulty_0_100": 41,
+   "advertisers": 10
+  },
+  {
+   "keyword": "excel error checker",
+   "intent": "инструмент",
+   "volume_month": 90,
+   "cpc_low_eur": 1.47,
+   "cpc_high_eur": 5.31,
+   "competition_0_100": 53,
+   "seo_difficulty_0_100": 41,
+   "advertisers": 9
+  },
+  {
+   "keyword": "spreadsheet audit",
+   "intent": "услуга",
+   "volume_month": 120,
+   "cpc_low_eur": 3.39,
+   "cpc_high_eur": 8.46,
+   "competition_0_100": 62,
+   "seo_difficulty_0_100": 55,
+   "advertisers": 9
+  },
+  {
+   "keyword": "excel audit",
+   "intent": "услуга",
+   "volume_month": 90,
+   "cpc_low_eur": 3.61,
+   "cpc_high_eur": 9.34,
+   "competition_0_100": 69,
+   "seo_difficulty_0_100": 65,
+   "advertisers": 8
+  },
+  {
+   "keyword": "financial model audit",
+   "intent": "услуга",
+   "volume_month": 60,
+   "cpc_low_eur": 3.28,
+   "cpc_high_eur": 8.96,
+   "competition_0_100": 59,
+   "seo_difficulty_0_100": 55,
+   "advertisers": 8
+  },
+  {
+   "keyword": "excel model audit",
+   "intent": "услуга",
+   "volume_month": 30,
+   "cpc_low_eur": 3.5,
+   "cpc_high_eur": 8.64,
+   "competition_0_100": 75,
+   "seo_difficulty_0_100": 70,
+   "advertisers": 10
+  },
+  {
+   "keyword": "check excel formulas",
+   "intent": "инструмент",
+   "volume_month": 130,
+   "cpc_low_eur": 1.8,
+   "cpc_high_eur": 5.1,
+   "competition_0_100": 48,
+   "seo_difficulty_0_100": 48,
+   "advertisers": 9
+  }
+ ],
+ "core_volume": 690,
+ "core_cpc_mean": 5.01,
+ "clicks_month": 21,
+ "cost_month_eur": 104,
+ "cac_eur": 2503.9,
+ "arppu_first_year_base": 100.6,
+ "ltv_cac": 0.04
+}
