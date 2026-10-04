@@ -15,7 +15,8 @@ KW = [("excel formulas", 1.00, "информационный"), ("financial mode
 CPC = {"информационный": (1.0, 2.5, 25, 55), "инструмент": (1.6, 5.5, 45, 80), "услуга": (3.5, 9.0, 40, 75)}   # CPC min, max EUR; конкурентность min, max
 rows = []
 for q, share, cls in KW:
-    vol = int(round(ANCHOR * share * float(np.exp(rng.normal(0, 0.10))) / 10) * 10)
+    noise = 1.0 if share == 1.0 else float(np.exp(rng.normal(0, 0.10)))
+    vol = int(round(ANCHOR * share * noise / 10) * 10)
     lo, hi, c1, c2 = CPC[cls]
     cpc_lo = round(lo * float(rng.uniform(0.9, 1.15)), 2); cpc_hi = round(hi * float(rng.uniform(0.9, 1.1)), 2)
     comp = int(rng.integers(c1, c2 + 1))
