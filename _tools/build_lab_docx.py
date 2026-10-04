@@ -463,6 +463,8 @@ def build(md_text: str, resource: Path, out: Path, lab_no: str, topic: str, kind
     doc.save(str(out))
     if update_fields_with_word(out):
         doc = Document(str(out))
+        for _p in doc.paragraphs:
+            stp_polish.italic_latin(_p)
         set_core(doc)  # Word при сохранении записывает своё имя пользователя в lastModifiedBy
         doc.save(str(out))
         print("OK", out.relative_to(ROOT), "(оглавление обновлено через Word)")

@@ -126,7 +126,7 @@ def do_lk(app):
             if not pres[ci]:
                 continue
             s = strn[ci]
-            put_row(w3, r, "A", [c["id"], c["prod"][:60], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта 03.10.2026", 1, min(3, round(s * 3 / 5)), 3 if s >= 3 else 2, wgt])
+            put_row(w3, r, "A", [c["id"], c["prod"], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта 03.10.2026", 1, min(3, round(s * 3 / 5)), 3 if s >= 3 else 2, wgt])
             r += 1
     n_lev = r - 7
     # Кано
@@ -134,7 +134,7 @@ def do_lk(app):
         rr = 7 + i
         used = [strn[j] for j in range(7) if pres[j]]
         put_row(w4, rr, "A", [rid, fname, task, FEAT_PLACE[rid], kano, wgt, sum(pres), NOSET, round(sum(used) / len(used), 2) if used else 0])
-        put(w4, f"K{rr}", "не делать при дефиците ресурсов" if kano == "Безразличное" else "включить в MVP" if (kano in ("Обязательное",) or sum(pres) / 7 >= 0.6) else ("рассмотреть как дифференциацию" if sum(pres) / 7 < 0.35 else "включить во второй релиз"))
+        put(w4, f"K{rr}", DECISION[rid])
     # Стандарт рынка
     for i, (rid, fname, task, kano, wgt, lvl, pres, strn) in enumerate(FEAT):
         rr = 7 + i
