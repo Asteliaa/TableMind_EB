@@ -11,6 +11,10 @@ for m in (rep_s1, rep_s2, rep_s3, rep_s4):
     m.run()
 text = C.resolve("\n".join(C.OUT)) + "\n"
 text = re.sub(r"\n{3,}", "\n\n", text)
+import sys as _sys
+_sys.path.insert(0, str(ROOT.parent / "_tools"))
+from renumber_sources import renumber
+text = renumber(text)
 (ROOT / "ОТЧЕТ.md").write_text(text, encoding="utf-8")
 # проверки
 bad_yo = text.count("ё") + text.count("Ё")
