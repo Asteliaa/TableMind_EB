@@ -14,6 +14,12 @@ def renumber(text: str) -> str:
     if j < 0:
         j = len(text)
     body_a, srcs, body_b = text[:i], text[i:j], text[j:]
+    def _expand(m):
+        lo, hi = int(m.group(1)), int(m.group(2))
+        return ", ".join(f"[{i}]" for i in range(lo, hi + 1))
+
+    rng = re.compile(r"\[(\d+)\]\s*-\s*\[(\d+)\]")
+    body_a, srcs, body_b = rng.sub(_expand, body_a), srcs, rng.sub(_expand, body_b)
     cite = re.compile(r"(?<!\[)\[(\d+)\](?!\])")
     order = []
     for part in (body_a, body_b):
