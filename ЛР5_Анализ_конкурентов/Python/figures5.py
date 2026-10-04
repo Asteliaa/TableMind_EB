@@ -20,12 +20,21 @@ plt.rcParams.update({"font.size": 9, "axes.grid": True, "grid.alpha": 0.3, "axes
 LCOL = {"Прямой конкурент": "#d62728", "Близкий альтернативный конкурент": "#ff7f0e", "Косвенный конкурент / заменитель": "#1f77b4", "Смежная или потенциальная конкуренция": "#7f7f7f"}
 
 
+MAN = {"Datarails": (-6, 6), "DataSnipper": (6, 6), "Arixcel": (6, -13), "Shortcut": (-6, 6)}
+
+
 def f1():
     fig, ax = plt.subplots(figsize=(8.2, 4.8))
+    seen = {}
+    placed = []
     for (kid, nm, site, country, typ, prod, seg, sc), c in zip(CLS, A["cls"]):
         x = (sc[0] + sc[2]) / 2; y = (sc[1] + sc[6]) / 2
         ax.scatter(x, y, s=70, color=LCOL[c["level"]], zorder=3)
-        ax.annotate(f"{nm} ({c['score']:.2f})", (x, y), textcoords="offset points", xytext=(5, 4), fontsize=8)
+        k = seen.get((x, y), 0); seen[(x, y)] = k + 1
+        near = [xx for (xx, yy) in placed if yy == y and abs(xx - x) < 1.1 and xx != x]
+        left = bool(near) and min(near) < x
+        placed.append((x, y))
+        ax.annotate(f"{nm} ({c['score']:.2f})".replace(".ai", "#ai").replace(".", ",").replace("#ai", ".ai"), (x, y), textcoords="offset points", xytext=MAN.get(nm, (-5 if left else 5, 4 + 11 * k)), fontsize=8, ha=("right" if MAN[nm][0] < 0 else "left") if nm in MAN else ("right" if left else "left"))
     ax.axvline(3, color="k", lw=0.8, ls="--"); ax.axhline(3, color="k", lw=0.8, ls="--")
     ax.set_xlim(0.8, 5.3); ax.set_ylim(1.2, 5.3)
     ax.set_xlabel("задача и функциональная заменяемость, 0-5"); ax.set_ylabel("аудитория и география, 0-5")
@@ -39,13 +48,14 @@ def f2():
     K = A["kano"]
     cols = {"Обязательное": "#d62728", "Линейное": "#1f77b4", "Привлекательное": "#2ca02c", "Безразличное": "#7f7f7f"}
     rows = sorted(K, key=lambda k: k["share"])
-    fig, ax = plt.subplots(figsize=(8.2, 4.9))
-    ax.barh([r["name"] for r in rows], [r["share"] * 100 for r in rows], color=[cols[r["cat"]] for r in rows])
+    fig, ax = plt.subplots(figsize=(8.2, 7.0))
+    import textwrap
+    ax.barh([textwrap.fill(r["name"], 34) for r in rows], [r["share"] * 100 for r in rows], color=[cols[r["cat"]] for r in rows])
     ax.axvline(60, color="k", ls="--", lw=1); ax.axvline(35, color="k", ls=":", lw=1)
-    ax.text(61, 0, "стандарт 60 %", fontsize=7.5); ax.text(36, 1, "формируется 35 %", fontsize=7.5)
+    ax.text(61, len(rows) - 0.6, "стандарт 60 %", fontsize=7.5); ax.text(36, len(rows) - 0.6, "формируется 35 %", fontsize=7.5)
     for t, c in cols.items():
-        ax.barh([], [], color=c, label=t)
-    ax.legend(fontsize=7.5, loc="lower right"); ax.set_xlabel("доля из 7 конкурентов, у которых признак есть, %")
+        ax.add_patch(plt.Rectangle((0, 0), 0, 0, color=c, label=t))
+    ax.legend(fontsize=7.5, loc="center right"); ax.set_xlabel("доля из 7 конкурентов, у которых признак есть, %")
     plt.setp(ax.get_yticklabels(), fontsize=7.5)
     fig.tight_layout(); fig.savefig(OUT / "02_кано_доли.png", dpi=200); plt.close(fig)
 
@@ -63,7 +73,7 @@ def f3():
     ax.grid(False)
     for i in range(G.shape[0]):
         for j in range(G.shape[1]):
-            ax.text(j, i, f"{G[i, j]:.1f}", ha="center", va="center", fontsize=7.5, color="white" if G[i, j] > 3.2 else "black")
+            ax.text(j, i, f"{G[i, j]:.1f}".replace(".", ","), ha="center", va="center", fontsize=7.5, color="white" if G[i, j] > 3.2 else "black")
     fig.colorbar(im, ax=ax, fraction=0.03)
     fig.tight_layout(); fig.savefig(OUT / "03_сравнение_товаров.png", dpi=200); plt.close(fig)
 
@@ -78,9 +88,9 @@ def f4():
     ax.bar(x + 0.2, cw, 0.4, label="взвешенная оценка цифрового товара (0-5)", color="#ff7f0e")
     ax.set_xticks(x); ax.set_xticklabels(names, rotation=20, ha="right", fontsize=8); ax.set_ylim(0, 5.5)
     for xi, v in zip(x - 0.2, bm):
-        ax.text(xi, v + 0.05, f"{v:.1f}", ha="center", fontsize=7.5)
+        ax.text(xi, v + 0.05, f"{v:.1f}".replace(".", ","), ha="center", fontsize=7.5)
     for xi, v in zip(x + 0.2, cw):
-        ax.text(xi, v + 0.05, f"{v:.1f}", ha="center", fontsize=7.5)
+        ax.text(xi, v + 0.05, f"{v:.1f}".replace(".", ","), ha="center", fontsize=7.5)
     ax.legend(fontsize=8, loc="upper right")
     fig.tight_layout(); fig.savefig(OUT / "04_бизнес_модель_и_товар.png", dpi=200); plt.close(fig)
 

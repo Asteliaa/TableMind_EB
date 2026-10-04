@@ -50,7 +50,7 @@ def fig_geo():
     ax.barh(names, rest, left=top5, color="#d9d9d9", label="остальные страны")
     ax.set_xlim(0, 100)
     ax.set_xlabel("доля визитов, %")
-    ax.legend(fontsize=8, loc="lower right")
+    ax.legend(fontsize=8, loc="upper center", bbox_to_anchor=(0.5, -0.14), ncol=3, frameon=False)
     fig.tight_layout(); fig.savefig(OUT / "08_география_сайтов.png", dpi=200); plt.close(fig)
 
 

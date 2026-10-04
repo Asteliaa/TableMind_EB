@@ -8,6 +8,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = Path(__file__).resolve().parent
+import sys
+sys.path.insert(0, str(HERE.parent.parent / "ЛР2-3_Объем_рынка" / "Python"))
+from inputs import load_sw
+NAMES = {r["domain"]: r["name"] for r in load_sw()}
 A = json.loads((HERE / "results" / "analysis.json").read_text(encoding="utf-8"))
 plt.rcParams.update({"font.size": 9, "axes.grid": True, "grid.alpha": 0.3, "axes.spines.top": False, "axes.spines.right": False})
 sh = A["conc"]["shares"]
@@ -24,7 +28,7 @@ ax.text(len(sh) - 0.1, 61.5, "порог высокой концентрации
 for i in (3, 5):
     ax.annotate(f"CR{i} = {cum[i-1]:.0f} %", (i, cum[i - 1]), textcoords="offset points", xytext=(8, -14), fontsize=8)
 ax.set_xticks(n)
-ax.set_xticklabels([d.split(".")[0] for d, _ in sh], rotation=45, ha="right", fontsize=8)
+ax.set_xticklabels([NAMES[d] for d, _ in sh], rotation=45, ha="right", fontsize=8)
 ax.set_ylabel("доля релевантного трафика, %")
 ax.set_ylim(0, 105)
 ax.legend(loc="center right", fontsize=8)

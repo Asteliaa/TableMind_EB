@@ -34,7 +34,7 @@ def fig1():
         ax.text(r["visits_month"] * 1.08, i, fmt(r["visits_month"]), va="center", fontsize=8)
     ax.set_xlim(1000, 3e6)
     for t, c in COL.items():
-        ax.barh([], [], color=c, label=t)
+        ax.add_patch(plt.Rectangle((0, 0), 0, 0, color=c, label=t))
     ax.legend(title="тип игрока", loc="lower right", fontsize=8)
     fig.tight_layout(); fig.savefig(OUT / "01_визиты_сайтов.png", dpi=200); plt.close(fig)
 

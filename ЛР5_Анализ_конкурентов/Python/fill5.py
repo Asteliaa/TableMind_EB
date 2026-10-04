@@ -134,7 +134,7 @@ def do_lk(app):
         rr = 7 + i
         used = [strn[j] for j in range(7) if pres[j]]
         put_row(w4, rr, "A", [rid, fname, task, FEAT_PLACE[rid], kano, wgt, sum(pres), NOSET, round(sum(used) / len(used), 2) if used else 0])
-        put(w4, f"K{rr}", "включить в MVP" if (kano in ("Обязательное",) or sum(pres) / 7 >= 0.6) else ("рассмотреть как дифференциацию" if sum(pres) / 7 < 0.35 else "включить во второй релиз"))
+        put(w4, f"K{rr}", "не делать при дефиците ресурсов" if kano == "Безразличное" else "включить в MVP" if (kano in ("Обязательное",) or sum(pres) / 7 >= 0.6) else ("рассмотреть как дифференциацию" if sum(pres) / 7 < 0.35 else "включить во второй релиз"))
     # Стандарт рынка
     for i, (rid, fname, task, kano, wgt, lvl, pres, strn) in enumerate(FEAT):
         rr = 7 + i

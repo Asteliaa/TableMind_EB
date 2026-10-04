@@ -46,6 +46,11 @@ def _lower_first(s):
     return s[0].lower() + s[1:] if s and "А" <= s[0] <= "Я" else s
 
 
+def _dec(c):
+    "Десятичная точка в числовой ячейке заменяется запятой."
+    return re.sub(r"^(-?\d+)\.(\d+)$", r"\1,\2", c)
+
+
 def table(key, caption, header, rows, after):
     """Таблица с подписью сверху и обязательным пояснением после; если ссылки на таблицу еще не было, добавляется вводная фраза."""
     if f"[[t:{key}]]" not in "\n".join(OUT):
@@ -58,7 +63,7 @@ def table(key, caption, header, rows, after):
     OUT.append("| " + " | ".join(header) + " |")
     OUT.append("|" + "|".join("---" for _ in header) + "|")
     for r in rows:
-        cells = [str(c).replace("|", "/").replace("\n", " ") for c in r]
+        cells = [_dec(str(c).replace("|", "/").replace("\n", " ")) for c in r]
         OUT.append("| " + " | ".join(cells) + " |")
     OUT.append("")
     P(after)

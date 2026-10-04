@@ -75,7 +75,7 @@ def fill(x: XL, sw, results):
         put(ws, f"{c}4", GMV[sc]); put(ws, f"{c}5", round(arppu(sc)[2], 2)); put(ws, f"{c}7", FEE)
     put(ws, "A7", "Комиссия магазина надстроек (AppSource)"); put(ws, "A8", "Удержание магазином надстроек в месяц")
     put(ws, "A9", "Удержание магазином надстроек в год")
-    put(ws, "F4", "Допущение Д-14: оплаты через AppSource; ДОСНЯТЬ условия Microsoft")
+    put(ws, "F4", "Допущение Д-14: оплаты через AppSource; комиссия 3 % подтверждена условиями Microsoft")
 
     ws = x.ws("09_Источники")
     for r in range(4, 11):
