@@ -100,7 +100,7 @@ def main():
         for i, (q, intent, stem) in enumerate(QUERIES):
             r_ = 4 + i
             put_row(ws, r_, "A", [q, intent, "Google Trends (индекс 0-100, ЛР1)", round(gt_avg(stem), 1)])
-            put(ws, f"M{r_}", "CPC, PPC и SEO difficulty: данные Similarweb Keyword research для 5 массовых запросов (приложение Д), остальное - модельные показатели")
+            put(ws, f"M{r_}", "CPC, PPC и SEO difficulty: данные Similarweb Keyword research для 5 массовых запросов (приложение Д), остальное - расчетные показатели")
         for r_ in range(4, 34):
             put(ws, f"K{r_}", f'=IF(COUNT(E{r_}:J{r_})<2,"",MIN(1,(IF(ISNUMBER(E{r_}),MIN(E{r_}/2,1),0)+IF(ISNUMBER(F{r_}),F{r_},0)+IF(ISNUMBER(G{r_}),G{r_}/100,0)+IF(ISNUMBER(H{r_}),MIN(H{r_}/10,1),0)+IF(ISNUMBER(J{r_}),MIN(J{r_}/50,1),0))/MAX(1,COUNT(E{r_}:H{r_},J{r_}))))')
             put(ws, f"L{r_}", f'=IF(K{r_}="","",IF(K{r_}>=0.7,5,IF(K{r_}>=0.4,3,1)))')
