@@ -426,15 +426,26 @@ def fit_columns(t, total_mm=165):
             words = cell.text.split()
             longest = max((len(w) for w in words), default=1)
             weights[j] = max(weights[j], min(len(cell.text), 60) * 0.6 + longest)
+    import re as _re
     min_w = [12.0] * ncols
     for row in t.rows:
         for j, cell in enumerate(row.cells[:ncols]):
-            lw = len(max((cell.text.split() or [""]), key=len))
-            min_w[j] = max(min_w[j], min(lw * 2.4 + 3, 38.0))
+            lw = max((len(w) for w in _re.split("[ " + chr(9) + chr(10) + "]+", cell.text) if w), default=1)
+            min_w[j] = max(min_w[j], min(lw * 2.5 + 4.2, 46.0))
+    if sum(min_w) > total_mm:
+        k0 = total_mm / sum(min_w)
+        min_w = [w * k0 for w in min_w]
     s = sum(weights) or 1
-    widths = [max(total_mm * w / s, min_w[j]) for j, w in enumerate(weights)]
-    k = total_mm / sum(widths)
-    widths = [w * k for w in widths]
+    widths = [total_mm * w / s for w in weights]
+    for _ in range(ncols):
+        low = [j for j in range(ncols) if widths[j] < min_w[j]]
+        if not low:
+            break
+        fixed = sum(min_w[j] for j in low)
+        free = [j for j in range(ncols) if j not in low]
+        rest = total_mm - fixed
+        fw = sum(weights[j] for j in free) or 1
+        widths = [min_w[j] if j in low else rest * weights[j] / fw for j in range(ncols)]
     tbl_pr = t._tbl.tblPr
     tw = OxmlElement("w:tblW")
     tw.set(qn("w:w"), str(int(total_mm * 56.7)))
