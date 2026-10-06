@@ -71,8 +71,8 @@ def fig3():
     ax.barh(labs[::-1], vals[::-1], color=[C3, C1, C4])
     ax.set_xscale("log"); ax.set_xlim(1e4, 3e10)
     for i, v in enumerate(vals[::-1]):
-        ax.text(v * 1.2, i, fmt(v) + " EUR", va="center", fontsize=9)
-    ax.set_xlabel("EUR в год (логарифмическая шкала)")
+        ax.text(v * 1.2, i, fmt(v) + " у.е.", va="center", fontsize=9)
+    ax.set_xlabel("у.е. в год (логарифмическая шкала)")
     fig.tight_layout(); fig.savefig(OUT / "03_tam_sam_som.png", dpi=200); plt.close(fig)
 
 
@@ -90,7 +90,7 @@ def fig4():
         ax.scatter([v[0], v[2]], [i, i], color=C1, s=25, zorder=3)
         ax.scatter([v[1]], [i], color=C2, s=45, zorder=4)
     ax.set_yticks(range(len(items))); ax.set_yticklabels([n for n, _ in items], fontsize=8)
-    ax.set_xscale("log"); ax.set_xlabel("EUR в год (логарифмическая шкала); красная точка - базовый сценарий")
+    ax.set_xscale("log"); ax.set_xlabel("у.е. в год (логарифмическая шкала); красная точка - базовый сценарий")
     fig.tight_layout(); fig.savefig(OUT / "04_диапазоны_методов.png", dpi=200); plt.close(fig)
 
 

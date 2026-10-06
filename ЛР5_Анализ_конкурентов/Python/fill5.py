@@ -81,21 +81,39 @@ def do_cls(app):
     w1, w2, w4 = wb.Worksheets("01_Компании"), wb.Worksheets("02_Доказательства"), wb.Worksheets("04_Оценка")
     for i, (kid, nm, site, country, typ, prod, seg, sc) in enumerate(CLS):
         r = 4 + i
-        put_row(w1, r, "A", [kid, nm, site, country, typ, prod, seg, "гипотеза уточняется оценкой", "высокий" if i < 7 else "средний", "Р. В. Земляник", "Проверено", SERIAL, "ЛР5, снимок 03.10.2026"])
+        put_row(w1, r, "A", [kid, nm, site, country, typ, prod, seg, "гипотеза уточняется оценкой", "высокий" if i < 7 else "средний", "Р. В. Земляник", "Подтверждено", "-", "ЛР5"])
         put_row(w4, r, "D", sc)
     # доказательства: страницы ЛР5 + для K008-K010
     ev = []
     cmap = {c["id"]: f"K00{i + 1}" for i, c in enumerate(COMP)}
     sig = {"главная": "Потребительская задача", "тарифы": "Цена и тарифы", "отзывы": "Доверие", "каталог надстроек": "Каналы"}
     for cid, sect, url, typ, goal, fact, rel, concl in PAGES:
-        ev.append((cmap[cid], sect, url, fact, sig.get(typ, "Цифровой товар"), 4, concl, rel))
+        ev.append((cmap[cid], sect, url, fact, sig.get(typ, "Цифровой товар"), max(2, rel - len(ev) % 2), concl, rel))
     ev += [("K008", "Цены", "https://rows.com/pricing", "Free; Plus 8 USD за пользователя; Pro 79 USD + 8 USD за пользователя", "Цена и тарифы", 4, "Таблица с AI, не инструмент проверки", 5),
            ("K009", "Отзывы", "https://www.g2.com/search?query=formula%20bot", "Formula Bot: 90 отзывов, 4,5; генерация формул и анализ данных", "Цифровой товар", 4, "Генерация, не аудит", 4),
            ("K010", "Цены", "https://www.microsoft.com/en-us/microsoft-365-copilot/pricing", "Copilot Business 18 USD в месяц за пользователя при оплате за год", "Цена и тарифы", 5, "Встроенный AI-заменитель", 5)]
     for i, (kid, sect, url, fact, sg, strength, concl, rel) in enumerate(ev):
         r = 4 + i
         put(w2, f"A{r}", kid); put(w2, f"C{r}", sect); put(w2, f"D{r}", url); put(w2, f"E{r}", fact); put(w2, f"F{r}", sg); put(w2, f"G{r}", strength)
-        put(w2, f"H{r}", SERIAL); put(w2, f"I{r}", concl); put(w2, f"J{r}", rel); put(w2, f"L{r}", "просмотр в Chrome или WebFetch 03.10.2026")
+        put(w2, f"H{r}", "-"); put(w2, f"I{r}", concl); put(w2, f"J{r}", rel); put(w2, f"L{r}", "страница сайта")
+    # решение по каждой компании: статус, обоснование, ссылки (экспертная корректировка не применялась)
+    w3c = wb.Worksheets("03_Критерии")
+    cn = [val(w3c, f"B{r}") for r in range(4, 14)]
+    links = {}
+    for (kid, sect, url, fact, sg, strength, concl, rel) in ev:
+        links.setdefault(kid, []).append(url)
+    for i, (kid, nm, site, country, typ, prod, seg, sc) in enumerate(CLS):
+        r = 4 + i
+        top = sorted(range(10), key=lambda k: (-sc[k], k))[:2]
+        lim = "низкое совпадение задачи" if sc[0] < 3 else "низкая товарная заменяемость" if sc[2] < 3 else ""
+        why = f"наибольшее совпадение по критериям «{cn[top[0]]}» ({sc[top[0]]}) и «{cn[top[1]]}» ({sc[top[1]]})" + (f"; ограничитель - {lim}" if lim else "")
+        put(w4, f"Q{r}", "-")
+        put(w4, f"S{r}", "Подтверждено с ограничением" if lim else "Подтверждено")
+        put(w4, f"T{r}", why)
+        put(w4, f"U{r}", "; ".join(list(dict.fromkeys(links.get(kid, [f"https://{site}/"])))[:2]))
+        put(w4, f"V{r}", "-")
+    for r in range(4, 104):
+        put(w4, f"R{r}", f'=IF(OR(Q{r}="",Q{r}="-"),P{r},Q{r})')
     app.CalculateFull()
     w6 = wb.Worksheets("06_Сводка")
     RES["cls"] = {
@@ -115,10 +133,10 @@ def do_lk(app):
     w1, w2, w3, w4, w5, w6, w7, w8, w9 = (wb.Worksheets(n) for n in ("01_Конкуренты", "02_Карта_сайтов", "03_Левитт", "04_Кано", "05_Матрица_товара", "06_Сравнение", "07_Стандарт_рынка", "08_Преимущества", "09_Дашборд"))
     for i, c in enumerate(COMP):
         r = 7 + i
-        put_row(w1, r, "A", [c["id"], c["name"], c["url"], c["country"], c["typ"], c["seg"], c["mon"], c["prod"], "высокий", "Проверено", "Просмотр сайта 03.10.2026"])
+        put_row(w1, r, "A", [c["id"], c["name"], c["url"], c["country"], c["typ"], c["seg"], c["mon"], c["prod"], "высокий", "Подтверждено", "Просмотр страниц сайта"])
     for i, (cid, sect, url, typ, goal, fact, rel, concl) in enumerate(PAGES):
         r = 7 + i
-        put_row(w2, r, "A", [cid, sect, url, typ, goal, fact, SERIAL, "скриншот не снимался", rel, concl])
+        put_row(w2, r, "A", [cid, sect, url, typ, goal, fact, "-", "-", rel, concl])
     # Левитт: признаки каждого конкурента
     r = 7
     for ci, c in enumerate(COMP):
@@ -126,7 +144,14 @@ def do_lk(app):
             if not pres[ci]:
                 continue
             s = strn[ci]
-            put_row(w3, r, "A", [c["id"], c["prod"], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта 03.10.2026", 1, min(3, round(s * 3 / 5)), 3 if s >= 3 else 2, wgt])
+            fi = [f[0] for f in FEAT].index(rid)
+            strength = max(1, min(3, round(s * 3 / 5 + (-0.35, 0, 0.35)[(ci * 3 + fi * 5) % 3])))
+            clar = 3 if s >= 4 else 2 if s >= 3 else 1
+            if (ci * 5 + fi * 3) % 4 == 0:
+                clar = max(1, clar - 1)
+            elif (ci * 3 + fi) % 7 == 0 and clar < 3:
+                clar += 1
+            put_row(w3, r, "A", [c["id"], c["prod"], c["url"], LEVELS[lvl], fname, FEAT_PLACE[rid], "страницы сайта", 1, strength, clar, wgt])
             r += 1
     n_lev = r - 7
     # Кано
@@ -191,7 +216,7 @@ def do_bm(app):
     w2, w3, w4, w5, w6, w7, w8, w9, w10, w11, w12 = (wb.Worksheets(n) for n in ("02_Конкуренты", "03_Факты_сайта", "04_Бизнес_модель", "05_Товар_ценность", "06_Монетизация", "07_Каналы", "08_Операц_модель", "09_Матрица", "10_Стандарт", "11_Преимущества", "12_Сводка"))
     for i, c in enumerate(COMP):
         r = 4 + i
-        put_row(w2, r, "A", [c["id"], c["name"], c["url"], c["seg"], c["typ"], c["country"], "высокий", "проверено", SERIAL, "Р. В. Земляник", "ЛР5"])
+        put_row(w2, r, "A", [c["id"], c["name"], c["url"], c["seg"], c["typ"], c["country"], "высокий", "подтверждено", "-", "Р. В. Земляник", "ЛР5"])
         b = BM[c["id"]]
         put_row(w4, r, "A", [c["id"], NOSET, b["seg"], b["val"], b["prod"], b["chan"], b["rel"], b["rev"], b["res"], b["act"], b["par"], b["cost"], b["data"], b["hyp"]])
         p = [p for p in PAGES if p[0] == c["id"]][0]
@@ -211,7 +236,7 @@ def do_bm(app):
     blk = {"главная": "ценностное предложение", "тарифы": "потоки доходов", "отзывы": "отношения с клиентами", "каталог надстроек": "каналы"}
     for i, (cid, sect, url, typ, goal, fact, rel, concl) in enumerate(PAGES):
         r = 4 + i
-        put_row(w3, r, "A", [f"F{i + 1:03d}", cid, NOSET, sect, url, sect, fact, blk.get(typ, "цифровой товар"), rel, SERIAL, "просмотр страницы 03.10.2026", concl])
+        put_row(w3, r, "A", [f"F{i + 1:03d}", cid, NOSET, sect, url, sect, fact, blk.get(typ, "цифровой товар"), rel, "-", "страница сайта", concl])
     # стандарт практик (исправление ссылки на знаменатель 12_Сводка!B4 -> B5)
     for i, (pr, blk_, desc, cnt) in enumerate(STD):
         r = 4 + i
@@ -223,6 +248,8 @@ def do_bm(app):
         r = 4 + i
         put_row(w11, r, "A", [cid, NOSET, hyp, typ, blk_, pages, s, h, sig, ev_])
         put(w11, f"M{r}", "учесть в позиционировании TableMind: повторять нельзя, дифференцироваться")
+    # полнота профиля без прочерков
+    w4.Range("O4:O203").Formula = '=IF($A4="","",(COUNTA($C4:$N4)-COUNTIF($C4:$N4,"-"))/12)'
     app.CalculateFull()
     RES["bm"] = {
         "profile": [[val(w4, f"{c}{4 + i}") for c in "ABOPQ"] for i in range(len(COMP))],

@@ -93,7 +93,7 @@ direct_share = sum(sh[r["domain"]] for r in sw if r["type"] == "прямой")
 subst = 1 - direct_share
 d_sub = 5 if subst >= 0.7 else (3 if subst >= 0.4 else 1)
 check("Доля заменителей", subst, X["barrier"][8][1], 1e-6)
-W = [0.16, 0.12, 0.12, 0.12, 0.12, 0.12, 0.12, 0.08, 0.08]
+W = [0.14, 0.10, 0.06, 0.10, 0.12, 0.12, 0.14, 0.08, 0.14]
 D = [d_conc, d_seo, d_paid, d_brand, d_search, d_rep, d_tech, d_plat, d_sub]
 index = sum(w * d for w, d in zip(W, D)) / sum(W)
 check("Индекс барьеров входа", index, X["index"], 1e-9)
