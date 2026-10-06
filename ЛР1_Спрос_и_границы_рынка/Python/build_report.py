@@ -40,6 +40,8 @@ MANUAL = [
     ("через три группы поисковых запросов: проблемные", "через три группы поисковых запросов, а именно проблемные"),
 ]
 text = _nocolon(text, MANUAL)
+import currency_eur, status_map
+text = status_map.apply_md(currency_eur.apply(text))
 (ROOT / "ОТЧЕТ.md").write_text(text, encoding="utf-8")
 # проверки
 bad_yo = text.count("ё") + text.count("Ё")

@@ -14,6 +14,11 @@ import sys as _sys
 _sys.path.insert(0, str(ROOT.parent / "_tools"))
 from renumber_sources import renumber
 text = renumber(text)
+import currency_eur
+from nocolon import apply as _nocolon, capfirst_cells
+text = currency_eur.apply(text)
+text = _nocolon(text)
+text = capfirst_cells(text)
 (ROOT / "ОТЧЕТ.md").write_text(text, encoding="utf-8")
 bad_yo = text.count("ё") + text.count("Ё")
 bad_dash = text.count("—")

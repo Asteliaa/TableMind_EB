@@ -43,6 +43,22 @@ QUERIES = [  # запрос, намерение, файл GT (индекс, ср
 ]
 
 
+# ключевые слова Similarweb Keyword research (ставка клика в EUR - середина диапазона, конкуренция PPC 0-1, сложность SEO 0-100)
+KW = {"excel formulas": (3.87, 0.01, 15), "financial modeling": (4.57, 0.26, 41), "excel copilot": (4.73, 0.01, 35),
+      "chatgpt excel": (5.48, 0.30, 33), "excel ai": (6.37, 0.09, 42)}
+FIN = {  # финансирование (EUR по курсу НБРБ) и размер по открытым источникам (деловая пресса, каталоги)
+    "datasnipper.com": ("89 млн EUR (Series B, 2024)", "около 289 чел."), "datarails.com": ("155 млн EUR (привлечено всего)", "более 400 чел."),
+    "shortcut.ai": ("более 35 млн EUR (seed и Series A)", "-"), "operis.com": ("выручка 6,7 млн EUR (2022)", "51-100 чел."),
+    "rows.com": ("около 39 млн EUR", "около 50 чел."), "arixcel.com": ("не раскрыто", "1-10 чел."), "perfectxl.com": ("не раскрыто", "около 4 чел."),
+    "numerous.ai": ("сумма не раскрыта", "1-10 чел."), "formulabot.com": ("без внешнего финансирования", "-"),
+}
+QUERIES2 = [("excel formulas", "информационный", None), ("financial modeling", "информационный", None), ("excel copilot", "AI-альтернатива", "S_excel_copilot_5y"),
+            ("chatgpt excel", "AI-альтернатива", None), ("excel ai", "AI-альтернатива", None),
+            ("excel audit", "коммерческий", "S_excel_audit_5y"), ("spreadsheet audit", "коммерческий", "S_spreadsheet_audit_5y"),
+            ("excel formula checker", "инструментальный", "S_excel_formula_checker_5y"), ("financial model audit", "коммерческий", "S_financial_model_audit_5y"),
+            ("perfectxl", "брендовый", "S_perfectxl_5y")]
+
+
 def gt_avg(stem):
     sys.path.insert(0, str(ROOT4.parent / "ЛР1_Спрос_и_границы_рынка" / "Python"))
     import data_prep as dp
@@ -97,19 +113,22 @@ def main():
         for r_ in range(4, 34):
             for c in "ABCDEFGHIJM":
                 put(ws, f"{c}{r_}", None)
-        for i, (q, intent, stem) in enumerate(QUERIES):
+        for i, (q, intent, stem) in enumerate(QUERIES2):
             r_ = 4 + i
-            put_row(ws, r_, "A", [q, intent, "Google Trends (индекс 0-100, ЛР1)", round(gt_avg(stem), 1)])
-            put(ws, f"M{r_}", "CPC, PPC и SEO difficulty: данные Similarweb Keyword research для 5 массовых запросов (приложение Д), остальное - расчетные показатели")
+            kw = KW.get(q)
+            gtv = round(gt_avg(stem), 1) if stem else "-"
+            put_row(ws, r_, "A", [q, intent, "Google Trends (индекс 0-100, ЛР1)" + ("; Similarweb Keyword research" if kw else ""), gtv,
+                                   kw[0] if kw else "-", kw[1] if kw else "-", kw[2] if kw else "-", "-", "-", "-"])
+            put(ws, f"M{r_}", "ставка клика пересчитана в EUR по курсу НБРБ; конкуренция PPC и сложность SEO из Similarweb Keyword research" if kw else "запрос с малым объемом, данные ставок и сложности в Similarweb отсутствуют")
         for r_ in range(4, 34):
             put(ws, f"K{r_}", f'=IF(COUNT(E{r_}:J{r_})<2,"",MIN(1,(IF(ISNUMBER(E{r_}),MIN(E{r_}/2,1),0)+IF(ISNUMBER(F{r_}),F{r_},0)+IF(ISNUMBER(G{r_}),G{r_}/100,0)+IF(ISNUMBER(H{r_}),MIN(H{r_}/10,1),0)+IF(ISNUMBER(J{r_}),MIN(J{r_}/50,1),0))/MAX(1,COUNT(E{r_}:H{r_},J{r_}))))')
             put(ws, f"L{r_}", f'=IF(K{r_}="","",IF(K{r_}>=0.7,5,IF(K{r_}>=0.4,3,1)))')
         put(ws, "D3", "Индекс Google Trends (спрос)")
-        put(ws, "B37", '=IFERROR(AVERAGE(K4:K33),"нет данных")')
-        put(ws, "C37", '=IF(ISNUMBER(B37),IF(B37>=0.7,"высокое",IF(B37>=0.4,"среднее","низкое")),"ДОСНЯТЬ")')
-        put(ws, "B38", '=IFERROR(COUNTIF(L4:L33,5)/COUNT(L4:L33),"нет данных")')
-        put(ws, "C38", '=IF(ISNUMBER(B38),IF(B38>=0.5,"высокая доля",IF(B38>=0.25,"средняя доля","низкая доля")),"ДОСНЯТЬ")')
-        put(ws, "D39", "Данные CPC и SEO difficulty не получены; в сводной оценке используется прокси по каналам Similarweb (лист 07, строка 8).")
+        put(ws, "B37", '=IFERROR(AVERAGE(K4:K33),"-")')
+        put(ws, "C37", '=IF(ISNUMBER(B37),IF(B37>=0.7,"высокое",IF(B37>=0.4,"среднее","низкое")),"-")')
+        put(ws, "B38", '=IFERROR(COUNTIF(L4:L33,5)/COUNT(L4:L33),"-")')
+        put(ws, "C38", '=IF(ISNUMBER(B38),IF(B38>=0.5,"высокая доля",IF(B38>=0.25,"средняя доля","низкая доля")),"-")')
+        put(ws, "D39", "Ставки и сложность выдачи получены для пяти массовых запросов; в индексе барьеров используется канальный прокси Similarweb (лист 07, строка 8), так как выборка ставок мала.")
 
         ws = W("05_Отзывы_рейтинги")
         for r_ in range(4, 34):
@@ -126,7 +145,7 @@ def main():
             put(ws, f"L{r_}", f'=IF(COUNT(B{r_}:K{r_})=0,"",MIN(1,(IF(COUNT(B{r_},D{r_},F{r_},H{r_})>0,AVERAGE(B{r_},D{r_},F{r_},H{r_})/5,0)+IF(COUNT(C{r_},E{r_},G{r_},I{r_})>0,MIN(SUM(C{r_},E{r_},G{r_},I{r_})/300,1),0)+IF(ISNUMBER(J{r_}),MIN(J{r_}/30,1),0)+IF(ISNUMBER(K{r_}),MIN(K{r_}/10,1),0))/MAX(1,(COUNT(B{r_},D{r_},F{r_},H{r_})>0)+(COUNT(C{r_},E{r_},G{r_},I{r_})>0)+ISNUMBER(J{r_})+ISNUMBER(K{r_}))))')
             put(ws, f"M{r_}", f'=IF(L{r_}="","",IF(L{r_}>=0.7,5,IF(L{r_}>=0.4,3,1)))')
         put(ws, "B38", "=SUM(C4:C33,E4:E33,G4:G33,I4:I33)/COUNTA(A4:A33)")
-        put(ws, "D38", "Среднее число отзывов на конкурента (G2, Capterra, Trustpilot); отзывы Google, кейсы и возраст бренда - ДОСНЯТЬ")
+        put(ws, "D38", "Среднее число отзывов на конкурента (G2, Capterra, Trustpilot); отзывы Google, кейсы и возраст бренда не собирались")
 
         ws = W("06_Технологии_финансы")
         for r_ in range(4, 34):
@@ -135,6 +154,8 @@ def main():
         for i, r in enumerate(sw):
             r_ = 4 + i
             put(ws, f"A{r_}", r["domain"]); put(ws, f"D{r_}", TECH[r["domain"]][0]); put(ws, f"E{r_}", TECH[r["domain"]][1])
+            fin = FIN.get(r["domain"], ("-", "-"))
+            put(ws, f"B{r_}", fin[0]); put(ws, f"C{r_}", fin[1])
             put(ws, f"M{r_}", "D и E - экспертные баллы (Д-17); финансирование и штат - деловая пресса (приложение Д ЛР5), вакансии и объявления не собирались")
         for r_ in range(4, 34):
             put(ws, f"K{r_}", f'=IF(COUNTA(B{r_}:J{r_})=0,"",MIN(1,(IF(ISNUMBER(B{r_}),MIN(B{r_}/500000,1),0)+IF(ISNUMBER(C{r_}),MIN(C{r_}/60,1),0)+IF(ISNUMBER(D{r_}),D{r_}/5,0)+IF(ISNUMBER(E{r_}),E{r_}/5,0)+IF(F{r_}="да",1,0)+IF(G{r_}="да",1,0)+IF(ISNUMBER(H{r_}),MIN(H{r_}/50,1),0)+IF(ISNUMBER(I{r_}),MIN(I{r_}/6,1),0)+IF(ISNUMBER(J{r_}),IF(J{r_}>0,1,0),0))/MAX(1,ISNUMBER(B{r_})+ISNUMBER(C{r_})+ISNUMBER(D{r_})+ISNUMBER(E{r_})+(F{r_}<>"")+(G{r_}<>"")+ISNUMBER(H{r_})+ISNUMBER(I{r_})+ISNUMBER(J{r_}))))')
@@ -143,13 +164,15 @@ def main():
 
         ws = W("07_Барьеры_входа")
         # исправления: сумма весов 1,04 нормируется; поисково-рекламная конкуренция при отсутствии данных - прокси по каналам Similarweb
-        put(ws, "C8", "=IF(ISNUMBER('04_Поиск_реклама'!B37),'04_Поиск_реклама'!B37,AVERAGE(MIN('03_Каналы_трафика'!C5/'01_Параметры'!B15,1),MIN('03_Каналы_трафика'!C6/'01_Параметры'!B14,1)))")
-        put(ws, "B8", "CPC, PPC, SEO difficulty (при отсутствии - прокси: органика и платный поиск Similarweb к порогам)")
+        put(ws, "C8", "=AVERAGE(MIN('03_Каналы_трафика'!C5/'01_Параметры'!B15,1),MIN('03_Каналы_трафика'!C6/'01_Параметры'!B14,1))")
+        put(ws, "B8", "Поисково-рекламное давление: органика и платный поиск Similarweb к порогам (ставки и сложность SEO приведены на листе 04)")
         put(ws, "C11", 0.6); put(ws, "B11", "Доля планируемых каналов через внешние платформы (AppSource, Product Hunt, поиск) из каналов ПЗ1")
         put(ws, "C12", "=IFERROR(1-SUMPRODUCT(('02_Конкуренты_SW'!B4:B33<>\"\")*(LEFT('02_Конкуренты_SW'!B4:B33,6)=\"прямой\")*'02_Конкуренты_SW'!E4:E33)/SUM('02_Конкуренты_SW'!E4:E33),0)")
         put(ws, "B12", "Доля релевантного трафика, приходящаяся на частичных конкурентов и заменителей")
+        for r_, w_ in zip(range(4, 13), (0.14, 0.10, 0.06, 0.10, 0.12, 0.12, 0.14, 0.08, 0.14)):
+            put(ws, f"E{r_}", w_)
         put(ws, "F13", "=SUM(F4:F12)/SUM(E4:E12)"); put(ws, "C13", "=F13")
-        put(ws, "H13", "Интегральная оценка давления (сумма весов в шаблоне 1,04, поэтому делится на сумму весов).")
+        put(ws, "H13", "Интегральная оценка давления - сумма взвешенных баллов; веса заданы с суммой 1,00.")
 
         ws = W("08_Дашборд")
         put(ws, "A15", '="По результатам оценки цифровой конкуренции индекс барьеров входа составляет "&ROUND(B5,2)&" из 5, что соответствует уровню: "&B6&". "&"Наиболее значимые факторы давления определены по листу 07_Барьеры_входа. "&"Данные Similarweb и альтернативных источников являются оценочной базой и требуют проверки "&"через фактические коммерческие данные, цены, конверсии и платежеспособность клиентов."')

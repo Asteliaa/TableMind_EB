@@ -12,6 +12,10 @@ import sys as _sys
 _sys.path.insert(0, str(ROOT.parent / "_tools"))
 from renumber_sources import renumber
 text = renumber(text)
+import sys as _s2
+_s2.path.insert(0, str(ROOT.parent / "_tools"))
+from postprocess import finish as _finish
+text = _finish(text)
 (ROOT / "ОТЧЕТ.md").write_text(text, encoding="utf-8")
 print(f"ОТЧЕТ.md: {len(text)} символов, таблиц {len(C.TABLES)}, рисунков {len(C.FIGS)}, ё: {text.count('ё') + text.count('Ё')}, тире: {text.count('—')}")
 print("неразрешенных ссылок:", re.findall(r"\[\[[tf]:\w+\]\]", text))

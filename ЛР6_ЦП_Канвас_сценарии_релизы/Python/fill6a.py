@@ -63,9 +63,9 @@ def do_canvas(app):
     fill_table(g("07_Операционная_основа"), 3, [[NOSET, o[1], o[2], o[3], o[4], o[5], o[6], o[7], o[8], o[9], None] for o in OPS], 11, 0)
     fill_table(g("08_Затраты"), 3, [[NOSET, c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], None] for c in COSTS], 11, 0)
     ws = g("09_Проверка_связности")
-    for i, (sc, todo) in enumerate(CANV_CHECK):
+    for i, (sc, evid, todo) in enumerate(CANV_CHECK):
         r = 3 + i
-        ws.Range(f"D{r}").Value2 = "см. листы 01-08 и отчет ЛР6, раздел 2.2"
+        ws.Range(f"D{r}").Value2 = evid
         ws.Range(f"E{r}").Value2 = sc
         ws.Range(f"G{r}").Value2 = todo
     ws = g("10_Паспорт")

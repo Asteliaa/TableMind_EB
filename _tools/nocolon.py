@@ -31,3 +31,23 @@ def apply(text: str, manual=()) -> str:
         line = COLON.sub(" - ", line)
         out.append(line)
     return "\n".join(out)
+
+
+LOWER_CYR = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
+UNIT = re.compile(r"^(ед|шт|тыс|млн|млрд|мес|кв|т)\.")
+
+
+def capfirst_cells(text: str) -> str:
+    """Первая буква текста в ячейках таблиц - прописная (кириллица)."""
+    out = []
+    for line in text.split("\n"):
+        if line.startswith("|") and not line.startswith("|---"):
+            cells = line.split("|")
+            for i in range(1, len(cells) - 1):
+                c = cells[i]
+                s = c.lstrip()
+                if len(s) > 3 and s[0] in LOWER_CYR and not UNIT.match(s):
+                    cells[i] = c[: len(c) - len(s)] + s[0].upper() + s[1:]
+            line = "|".join(cells)
+        out.append(line)
+    return "\n".join(out)
