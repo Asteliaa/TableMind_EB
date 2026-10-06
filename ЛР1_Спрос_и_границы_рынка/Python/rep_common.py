@@ -58,7 +58,7 @@ def table(key, caption, header, rows, after):
     """Таблица с подписью сверху и обязательным пояснением после; если ссылки на таблицу еще не было, добавляется вводная фраза."""
     if f"[[t:{key}]]" not in "\n".join(OUT):
         AUTO.append(key)
-        P(INTRO.get(key) or f"В таблице [[t:{key}]] представлено: {_lower_first(caption)}.")
+        P(INTRO.get(key) or f"Данные приведены в таблице [[t:{key}]] ({_lower_first(caption)}).")
     _t[0] += 1
     TABLES[key] = _t[0]
     OUT.append(f"Таблица {_t[0]} – {caption}")
