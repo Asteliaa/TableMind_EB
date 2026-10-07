@@ -160,6 +160,8 @@ def fix_formats(ws):
     pass
 
 
+# листы, где пустые ячейки образуются формулами по смыслу расчета (окно скользящего среднего), прочерк сломал бы формулы
+NO_DASH = {"Расчет", "Деловые_циклы"}
 IDLIKE = re.compile(r"^(Резерв\w*\s?\d*|[A-ZА-Я]{1,3}-?\d{1,4}|\d{1,3})$")
 
 
@@ -361,6 +363,8 @@ def style_sheet(ws, report):
         nxt = hdr[k + 1] if k + 1 < len(hdr) else r0 + rows
         for g in groups:
             blocks.append((hr, g[0], g[-1], nxt))
+    if ws.Name in NO_DASH:
+        blocks = []
     for hr, c_lo, c_hi, nxt in blocks:
         r = hr + 1
         while r < nxt:
